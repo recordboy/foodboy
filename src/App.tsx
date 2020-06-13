@@ -1,10 +1,12 @@
 import React from 'react';
-import FoodHeader from './components/FoodHeader';
+import FoodForm from './components/FoodForm';
+import FoodList from './components/FoodList';
 
 function App() {
   return (
     <div className="App">
-      <FoodHeader />
+      <FoodForm />
+      <FoodList />
     </div>
   );
 }
