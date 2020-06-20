@@ -8,13 +8,13 @@ class FoodForm extends Component {
 
   handleAdd = (e: any) => {
     console.log(this.state.item)
+    console.log(this.props)
   }
 
   handleData = (e: any) => {
     this.setState({
       item: e.target.value
     });
-
   }
 
   render() {
