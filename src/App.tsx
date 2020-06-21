@@ -1,28 +1,12 @@
 import React from 'react';
-import FoodForm from './components/FoodForm';
-import FoodList from './components/FoodList';
-
-interface DispatchProps {
-  a: () => void;
-}
+import Food from './components/Food';
 
 function App() {
-
-  
-
-  
-
-
   return (
     <div className="App">
-      {/* <FoodForm a={handleCreate} /> */}
-      <FoodList />
+      <Food />
     </div>
   );
-}
-
-const handleCreate = () => {
-
 }
 
 export default App;
