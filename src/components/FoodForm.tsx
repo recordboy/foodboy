@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import Food from './Food';
 
 class FoodForm extends Component {
 
+	constructor(props: Food) {
+		super(props);
+  }
+  
   state = {
     item: ''
   }
+
 
   handleAdd = (e: any) => {
     console.log(this.state.item)

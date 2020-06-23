@@ -3,9 +3,8 @@ import FoodForm from './FoodForm';
 import FoodList from './FoodList';
 
 
-
 // interface DispatchProps {
-//   aa: () => void;
+//   aa: string
 // }
 
 function split(str: string): string[] {
