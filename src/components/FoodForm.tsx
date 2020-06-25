@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const FoodForm = () => {
-  const [data, setData] = useState('');\
+  const [data, setData] = useState('');
   return (
     <div className="header">
       <input type="text" id="input-txt" className="inputTxt" onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
