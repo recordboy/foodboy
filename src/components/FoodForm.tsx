@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-
-const FoodForm = () => {
+const FoodForm = (props: { setData: (data: string) => void; }) => {
+  const { setData } = props;
   return (
     <div className="header">
       <input type="text" id="input-txt" className="inputTxt" onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-        // setData(e.target.value);
+          setData(e.target.value);
       }} />
       <div className="btnArea">
         <button type="button" onClick={(props) => {
-          console.log(props)
-          
+
         }}>add</button>
         <button type="button" id="btn-all-del" className="btnAllDel">all delete</button>
         <button type="button" id="btn-mix" className="btnMix">mix</button>
