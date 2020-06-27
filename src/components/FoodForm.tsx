@@ -8,12 +8,13 @@ const FoodForm = (props: {
     createList } = props;
   return (
     <div className="header">
-      <input type="text" id="input-txt" className="inputTxt" onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+      <input type="text" id="input-txt" className="inputTxt" value={inputData} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
         setInputData(e.target.value);
       }} />
       <div className="btnArea">
         <button type="button" onClick={() => {
           createList(inputData);
+          setInputData("");
         }}>add</button>
         <button type="button" id="btn-all-del" className="btnAllDel">all delete</button>
         <button type="button" id="btn-mix" className="btnMix">mix</button>
