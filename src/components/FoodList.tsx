@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 
-const FoodList = (props: {
-  data: string
-}) => {
-  const { data } = props;
-
+const FoodList = () => {
+  
   return (
-    <ul></ul>
+  <ul></ul>
   );
 }
 

@@ -4,17 +4,27 @@ import FoodList from './FoodList';
 
 const Food = () => {
   const [inputData, setInputData] = useState('');
-  const [data, setData] = useState('')
-  const createList = (data: string) => {
 
+  const list: string[] = [];
+ 
+ 
+ 
+ 
+  const createList = () => {
+    if (inputData) {
+      list.push(inputData);
 
+    }
+    console.log(list);
   }
-
+  
+  
 
   return (
     <>
-      <FoodForm inputData={inputData} setInputData={setInputData} setData={setData} />
-      <FoodList data={data} />
+      <FoodForm inputData={inputData} setInputData={setInputData} createList={createList} />
+      <div></div>
+      <FoodList />
     </>
   );
 }

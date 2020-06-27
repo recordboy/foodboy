@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 const FoodForm = (props: {
   inputData: string,
   setInputData: (data: string) => void;
-  setData: (data: string) => void;
+  createList: (data: string) => void;
 }) => {
   const { inputData, setInputData,
-    setData } = props;
+    createList } = props;
   return (
     <div className="header">
       <input type="text" id="input-txt" className="inputTxt" onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,7 +13,7 @@ const FoodForm = (props: {
       }} />
       <div className="btnArea">
         <button type="button" onClick={() => {
-          setData(inputData);
+          createList(inputData);
         }}>add</button>
         <button type="button" id="btn-all-del" className="btnAllDel">all delete</button>
         <button type="button" id="btn-mix" className="btnMix">mix</button>
