@@ -3,18 +3,17 @@ import FoodForm from './FoodForm';
 // import FoodList from './FoodList';
 
 const Food = () => {
-  const [data, setData] = useState('');
+  const [inputData, setInputData] = useState('');
+  const [data, setData] = useState('')
 
-  const createList = (data: string) => {
+}
 
-  }
-
-  return (
-    <>
-      <FoodForm setData={setData}/>
-      {/* <FoodList /> */}
-    </>
-  );
+return (
+  <>
+    <FoodForm inputData={inputData} setInputData={setInputData} setData={setData} />
+    {/* <FoodList /> */}
+  </>
+);
 }
 
 export default Food;
