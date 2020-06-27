@@ -5,15 +5,16 @@ import FoodForm from './FoodForm';
 const Food = () => {
   const [inputData, setInputData] = useState('');
   const [data, setData] = useState('')
+  const createList = (data: string) => {
 
-}
+  }
 
-return (
-  <>
-    <FoodForm inputData={inputData} setInputData={setInputData} setData={setData} />
-    {/* <FoodList /> */}
-  </>
-);
+  return (
+    <>
+      <FoodForm inputData={inputData} setInputData={setInputData} setData={setData} />
+      {/* <FoodList /> */}
+    </>
+  );
 }
 
 export default Food;
