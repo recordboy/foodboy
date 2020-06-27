@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
 const FoodList = (props: {
-  list: string;
-  setList: (data: string) => void;
+  list: string[];
 }) => {
+  const { list } = props;
+  console.log(list);
   return (
   <ul></ul>
   );
