@@ -12,7 +12,7 @@ const FoodForm = (props: {
         setInputData(e.target.value);
       }} />
       <div className="btnArea">
-        <button type="button" onClick={(props) => {
+        <button type="button" onClick={() => {
           setData(inputData);
         }}>add</button>
         <button type="button" id="btn-all-del" className="btnAllDel">all delete</button>
