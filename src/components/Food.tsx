@@ -1,30 +1,18 @@
 import React, { useState } from 'react';
 import FoodForm from './FoodForm';
-import FoodList from './FoodList';
+// import FoodList from './FoodList';
 
 const Food = () => {
   const [inputData, setInputData] = useState('');
-
-  const list: string[] = [];
- 
- 
- 
- 
+  const [list, setList] = useState('');
   const createList = () => {
-    if (inputData) {
-      list.push(inputData);
-
-    }
+    setList(inputData);
     console.log(list);
   }
-  
-  
-
   return (
     <>
       <FoodForm inputData={inputData} setInputData={setInputData} createList={createList} />
-      <div></div>
-      <FoodList />
+      {/* <FoodList list={list} setList={setList} /> */}
     </>
   );
 }
