@@ -8,18 +8,17 @@ const Food = () => {
   const [inputData, setInputData] = useState('');
   const [dataList, setDataList] = useState();
   const createList = (inputData: string) => {
-    
     if (inputData) {
       list.push(inputData);
-      // list.forEach((item: any) => {
-      //   const a: any = item;
-      // })
-      console.log(list);
     }
   }
   return (
     <>
       <FoodForm inputData={inputData} setInputData={setInputData} createList={createList} />
+      <ul>
+        
+
+      </ul>
       {/* <FoodList a={a} /> */}
     </>
   );
