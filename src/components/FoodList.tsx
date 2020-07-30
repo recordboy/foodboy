@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
 const FoodList = (props: {
-  dropList: string[];
+  list: string[];
 }) => {
-  const { dropList } = props;
+
+  const { list } = props;
   return (
-    <ul>{dropList}</ul>
+    <ul>{list}</ul>
   );
 }
 
