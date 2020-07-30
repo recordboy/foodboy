@@ -3,6 +3,7 @@ import FoodForm from './FoodForm';
 import FoodList from './FoodList';
 
 const list: string[] = [];
+const dropList: string[] = [];
 
 const Food = () => {
   const [inputData, setInputData] = useState('');
@@ -16,10 +17,8 @@ const Food = () => {
     <>
       <FoodForm inputData={inputData} setInputData={setInputData} createList={createList} />
       <ul>
-        
-
       </ul>
-      {/* <FoodList a={a} /> */}
+      <FoodList dropList={list} />
     </>
   );
 }
