@@ -2,26 +2,24 @@ import React, { useState } from 'react';
 import FoodForm from './FoodForm';
 import FoodList from './FoodList';
 
-const list: string[] = [];
-
-
-
+let id = 0;
+const info: object[] = [];
 const Food = () => {
-  const [inputData, setInputData] = useState('');
-  const [dataList, setDataList] = useState();
-  const id = 0;
-
+  const [list, setList] = useState([{}]);
   const createList = (inputData: string) => {
     if (inputData) {
-      list.push(inputData);
+      info.push({ id: id++, inputData });
+      setList(info);
+      console.log(info);
     }
-  }
+  };
+  const deleteList = () => {};
   return (
     <>
-      <FoodForm inputData={inputData} setInputData={setInputData} createList={createList} />
-      <FoodList list={list} />
+      <FoodForm createList={createList} deleteList={deleteList} />
+      <FoodList data={info} />
     </>
   );
-}
+};
 
 export default Food;
