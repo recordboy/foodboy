@@ -5,16 +5,13 @@ import FoodList from './FoodList';
 class Food extends Component {
   id = 0;
   state = {
-    // information: ['1', '2'],
-    information: 0,
+    information: [{}],
   };
 
   createList = (inputData: string) => {
     const { information } = this.state;
-
     this.setState({
-      // information: information.push('inputData'),
-      information: information + 1,
+      information: information.concat({ id: this.id++, name: inputData }),
     });
 
     console.log(information);
@@ -23,7 +20,7 @@ class Food extends Component {
   render() {
     return (
       <>
-        {/* <FoodForm createList={this.createList} /> */}
+        <FoodForm createList={this.createList} />
         {/* <FoodList data={info} /> */}
       </>
     );

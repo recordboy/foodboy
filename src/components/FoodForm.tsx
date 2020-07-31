@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 const FoodForm = (props: {
   createList: (data: string) => void;
-  deleteList: () => void;
 }) => {
   const [inputData, setInputData] = useState('');
-  const { createList, deleteList } = props;
+  const { createList } = props;
   return (
     <div className="search">
       <input
@@ -29,7 +28,6 @@ const FoodForm = (props: {
         <button
           type="button"
           onClick={() => {
-            deleteList();
           }}
         >
           all delete
