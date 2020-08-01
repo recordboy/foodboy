@@ -19,16 +19,31 @@ class Food extends Component {
     }
   };
 
+  deleteItem = (id: number) => {
+    console.log(id);
+    // const { information } = this.state;
+
+
+    // this.setState({
+    //   information: information.filter((info) => info.id !== id),
+    // });
+    // this.setState({
+    //   information: information.filter((info) => info.id !== id),
+    // });
+  }
+
   deleteAllItem = () => {
     this.setState({
       information: []
     });
   };
+
+
   render() {
     return (
       <>
         <FoodForm createList={this.createItem} deleteAllItem={this.deleteAllItem} />
-        <FoodList data={this.state.information} />
+        <FoodList data={this.state.information} deleteItem={this.deleteItem} />
       </>
     );
   }
