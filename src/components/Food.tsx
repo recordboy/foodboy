@@ -3,48 +3,35 @@ import FoodForm from './FoodForm';
 import FoodList from './FoodList';
 
 class Food extends Component {
-  id = 0;
+  id = 0
   state = {
-    information: [{}],
+    information: [],
   };
 
-  createList = (inputData: string) => {
+  createItem = (inputData: string) => {
     const { information } = this.state;
-    this.setState({
-      information: information.concat({ id: this.id++, name: inputData }),
-    });
-
-    console.log(information);
+    const item: any[] = information;
+    if (inputData) {
+      item.push({ id: this.id++, name: inputData });
+      this.setState({
+        information: item,
+      });
+    }
   };
-  deleteList = () => { };
+
+  deleteAllItem = () => {
+    this.setState({
+      information: []
+    });
+  };
   render() {
     return (
       <>
-        <FoodForm createList={this.createList} />
-        {/* <FoodList data={info} /> */}
+        <FoodForm createList={this.createItem} deleteAllItem={this.deleteAllItem} />
+        <FoodList data={this.state.information} />
       </>
     );
   }
 }
-
-// let id = 0;
-// const info: object[] = [];
-// const Food = () => {
-//   const [list, setList] = useState([{}]);
-//   const createList = (inputData: string) => {
-//     if (inputData) {
-//       info.push({ id: id++, inputData });
-//       setList(info);
-//       console.log(info);
-//     }
-//   };
-//   const deleteList = () => {};
-//   return (
-//     <>
-//       <FoodForm createList={createList} deleteList={deleteList} />
-//       <FoodList data={info} />
-//     </>
-//   );
-// };
 
 export default Food;
