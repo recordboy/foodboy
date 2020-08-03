@@ -28,13 +28,20 @@
 
 .list > div {
   position: relative;
-  padding-right: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   margin-top: 5px;
+  padding-right: 80px;
   border: 2px solid #ccc;
-  padding: 0 10px;
+  padding: 0 170px 0 10px;
   height: 40px;
   line-height: 35px;
   font-size: 20px;
+}
+
+.list > div.on {
+  background-color: #ccc;
 }
 
 .list > div > button {
@@ -46,4 +53,25 @@
   width: 80px;
   height: 36px;
   font-size: 20px;
+}
+
+.list > div > button.modify,
+.list > div > button.apply {
+  right: 80px;
+}
+
+.list > div > button.apply {
+  right: 80px;
+}
+
+.list > div > input[type='text'] {
+  position: relative;
+  vertical-align: top;
+  top: 0;
+  left: 0;
+  border: 0;
+  width: 100%;
+  height: 36px;
+  font-size: 20px;
+  outline: none;
 }

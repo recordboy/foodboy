@@ -1,10 +1,14 @@
+
 import React, { useState } from 'react';
+
 const FoodForm = (props: {
   createList: (data: string) => void;
   deleteAllItem: () => void;
+  randomMix: () => void;
+  randomSelect: () => void;
 }) => {
+  const { createList, deleteAllItem, randomMix, randomSelect } = props;
   const [inputData, setInputData] = useState('');
-  const { createList, deleteAllItem } = props;
   return (
     <div className="search">
       <input
@@ -34,10 +38,20 @@ const FoodForm = (props: {
         >
           all delete
         </button>
-        <button type="button" id="btn-mix" className="btnMix">
+        <button
+          type="button"
+          onClick={() => {
+            randomMix();
+          }}
+        >
           mix
         </button>
-        <button type="button" id="btn-select" className="btnSelect">
+        <button
+          type="button"
+          onClick={() => {
+            randomSelect();
+          }}
+        >
           select
         </button>
       </div>
