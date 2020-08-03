@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import FoodForm from './FoodForm';
 import FoodList from './FoodList';
 
-let countObj: object = {};
+let countObj: any = null;
 let countNum: number = 0;
 
 class Food extends Component {
@@ -90,17 +90,19 @@ class Food extends Component {
   countPoint = () => {
     const { information } = this.state;
     this.countMove(50, information.length);
-    if (countNum > 50) {
-      // clearInterval(countObj);
-      // this.countMove(500, information.length);
-    } else if (countNum > 999999) {
-    }
+    console.log(countNum);
   };
 
   countMove = (spped: number, listLength: number) => {
     let selectCount = 0;
     countObj = setInterval(() => {
       countNum++;
+
+      if (countNum > 50) {
+        clearInterval(countObj);
+      } else if (countNum > 999999) {
+      }
+      console.log(countNum);
       selectCount++;
       if (selectCount >= listLength) {
         selectCount = 0;
