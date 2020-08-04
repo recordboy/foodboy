@@ -10,7 +10,7 @@ let randomNum: number = 0;
 class Food extends Component {
   state = {
     id: 0,
-    selectPointer: [],
+    // selectPointer: [],
     disabled: false,
     information: [
       {
@@ -43,6 +43,7 @@ class Food extends Component {
     this.setState({
       information: item,
     });
+
   };
 
   updataItem = (id: number, name: string) => {
@@ -116,78 +117,24 @@ class Food extends Component {
 
   countPointerMove = (spped: number, listLength: number) => {
     const { information } = this.state;
-    const selectPointerNum = Math.floor(information.length / 2);
+    // const selectPointerNum = Math.floor(information.length / 2);
 
     countObj = setInterval(() => {
       const selectNum: number[] = [];
-      for (let i = 0; i < selectPointerNum; i++) {
-        selectNum.push(Math.floor(Math.random() * information.length));
-      }
-      this.setState({
-        selectPointer: selectNum,
-      });
-
-
-      setTimeout(() => {
-        clearInterval(countObj);
-        this.setState({
-          disabled: false,
-        });
-
-      }, 2000)
-
-      console.log(randomNum);
-      Math.floor(Math.random() * information.length);
-
-      const that: any = this;
-
-      countNum++;
-      if (countNum > 50) {
-        clearInterval(countObj);
-        this.setState({
-          disabled: false,
-        });
-      }
-      function move(time: number) {
-        clearInterval(countObj);
-        that.countPointerMove(time, listLength);
-      }
-      this.setState({
-        // select: random,
-      });
+      console.log('waiting');
+      // for (let i = 0; i < selectPointerNum; i++) {
+      //   selectNum.push(Math.floor(Math.random() * information.length));
+      // }
+      // this.setState({
+      //   selectPointer: selectNum,
+      // });
     }, spped);
-
-    // countObj = setInterval(() => {
-    //   const that: any = this;
-    //   countNum++;
-    //   selectCountNum++;
-    //   if (selectCountNum >= listLength) {
-    //     selectCountNum = 0;
-    //   }
-    //   if (countNum === 20) {
-    //     move(50);
-    //   } else if (countNum === 30) {
-    //     move(80);
-    //   } else if (countNum === 35) {
-    //     move(180);
-    //   } else if (countNum === 38) {
-    //     move(250);
-    //   } else if (countNum === 42) {
-    //     move(400);
-    //   } else if (countNum === 45) {
-    //     clearInterval(countObj);
-    //     this.setState({
-    //       disabled: false,
-    //     });
-    //   }
-    //   function move(time: number) {
-    //     clearInterval(countObj);
-    //     that.countPointerMove(time, listLength);
-    //   }
-    //   this.setState({
-    //     select: selectCountNum,
-    //   });
-    // }, spped);
+    setTimeout(() => {
+      clearInterval(countObj);
+      this.setState({
+        disabled: false,
+      });
+    }, 2000);
   };
 
   render() {
@@ -202,7 +149,7 @@ class Food extends Component {
         />
         <FoodList
           data={this.state.information}
-          selectPointer={this.state.selectPointer}
+          // selectPointer={this.state.selectPointer}
           disabled={this.state.disabled}
           deleteItem={this.deleteItem}
           updataItem={this.updataItem}

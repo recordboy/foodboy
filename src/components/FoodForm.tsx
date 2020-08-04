@@ -1,13 +1,19 @@
-
 import React, { useState } from 'react';
 
 const FoodForm = (props: {
+  disabled: boolean;
   createList: (data: string) => void;
   deleteAllItem: () => void;
   randomMix: () => void;
   randomSelect: () => void;
 }) => {
-  const { createList, deleteAllItem, randomMix, randomSelect } = props;
+  const {
+    disabled,
+    createList,
+    deleteAllItem,
+    randomMix,
+    randomSelect,
+  } = props;
   const [inputData, setInputData] = useState('');
   return (
     <div className="search">
@@ -23,6 +29,7 @@ const FoodForm = (props: {
       <div className="btnArea">
         <button
           type="button"
+          disabled={disabled ? true : false}
           onClick={() => {
             createList(inputData);
             setInputData('');
@@ -32,6 +39,7 @@ const FoodForm = (props: {
         </button>
         <button
           type="button"
+          disabled={disabled ? true : false}
           onClick={() => {
             deleteAllItem();
           }}
@@ -40,6 +48,7 @@ const FoodForm = (props: {
         </button>
         <button
           type="button"
+          disabled={disabled ? true : false}
           onClick={() => {
             randomMix();
           }}
@@ -48,6 +57,7 @@ const FoodForm = (props: {
         </button>
         <button
           type="button"
+          disabled={disabled ? true : false}
           onClick={() => {
             randomSelect();
           }}
