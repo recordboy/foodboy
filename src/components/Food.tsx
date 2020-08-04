@@ -4,12 +4,32 @@ import FoodList from './FoodList';
 
 let countObj: any = null;
 let countNum: number = 0;
+let selectCountNum: number = 0;
+let randomNum: number = 0;
 
 class Food extends Component {
   state = {
     id: 0,
-    select: -1,
-    information: [],
+    selectPointer: [],
+    disabled: false,
+    information: [
+      {
+        id: 0,
+        name: 'a',
+      },
+      {
+        id: 1,
+        name: 'b',
+      },
+      {
+        id: 2,
+        name: 'c',
+      },
+      {
+        id: 3,
+        name: 'd',
+      },
+    ],
   };
 
   createItem = (inputData: string) => {
@@ -79,44 +99,102 @@ class Food extends Component {
 
   randomSelect = () => {
     const { information } = this.state;
-    const randomNum: number = Math.floor(Math.random() * information.length);
-    this.setState({
-      select: randomNum,
-    });
-    this.countPoint();
+    randomNum = Math.floor(Math.random() * information.length);
+    this.countStart();
     console.log('result index : ' + randomNum);
   };
 
-  countPoint = () => {
+  countStart = () => {
     const { information } = this.state;
-    this.countMove(50, information.length);
-    console.log(countNum);
+    countNum = 0;
+    selectCountNum = randomNum;
+    this.countPointerMove(100, information.length);
+    this.setState({
+      disabled: true,
+    });
   };
 
-  countMove = (spped: number, listLength: number) => {
-    let selectCount = 0;
-    countObj = setInterval(() => {
-      countNum++;
+  countPointerMove = (spped: number, listLength: number) => {
+    const { information } = this.state;
+    const selectPointerNum = Math.floor(information.length / 2);
 
-      if (countNum > 50) {
-        clearInterval(countObj);
-      } else if (countNum > 999999) {
-      }
-      console.log(countNum);
-      selectCount++;
-      if (selectCount >= listLength) {
-        selectCount = 0;
+    countObj = setInterval(() => {
+      const selectNum: number[] = [];
+      for (let i = 0; i < selectPointerNum; i++) {
+        selectNum.push(Math.floor(Math.random() * information.length));
       }
       this.setState({
-        select: selectCount,
+        selectPointer: selectNum,
+      });
+
+
+      setTimeout(() => {
+        clearInterval(countObj);
+        this.setState({
+          disabled: false,
+        });
+
+      }, 2000)
+
+      console.log(randomNum);
+      Math.floor(Math.random() * information.length);
+
+      const that: any = this;
+
+      countNum++;
+      if (countNum > 50) {
+        clearInterval(countObj);
+        this.setState({
+          disabled: false,
+        });
+      }
+      function move(time: number) {
+        clearInterval(countObj);
+        that.countPointerMove(time, listLength);
+      }
+      this.setState({
+        // select: random,
       });
     }, spped);
+
+    // countObj = setInterval(() => {
+    //   const that: any = this;
+    //   countNum++;
+    //   selectCountNum++;
+    //   if (selectCountNum >= listLength) {
+    //     selectCountNum = 0;
+    //   }
+    //   if (countNum === 20) {
+    //     move(50);
+    //   } else if (countNum === 30) {
+    //     move(80);
+    //   } else if (countNum === 35) {
+    //     move(180);
+    //   } else if (countNum === 38) {
+    //     move(250);
+    //   } else if (countNum === 42) {
+    //     move(400);
+    //   } else if (countNum === 45) {
+    //     clearInterval(countObj);
+    //     this.setState({
+    //       disabled: false,
+    //     });
+    //   }
+    //   function move(time: number) {
+    //     clearInterval(countObj);
+    //     that.countPointerMove(time, listLength);
+    //   }
+    //   this.setState({
+    //     select: selectCountNum,
+    //   });
+    // }, spped);
   };
 
   render() {
     return (
       <>
         <FoodForm
+          disabled={this.state.disabled}
           createList={this.createItem}
           deleteAllItem={this.deleteAllItem}
           randomMix={this.randomMix}
@@ -124,7 +202,8 @@ class Food extends Component {
         />
         <FoodList
           data={this.state.information}
-          select={this.state.select}
+          selectPointer={this.state.selectPointer}
+          disabled={this.state.disabled}
           deleteItem={this.deleteItem}
           updataItem={this.updataItem}
         />
