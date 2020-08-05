@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import FoodForm from './FoodForm';
 import FoodList from './FoodList';
 
-const time: number = 5;
-
 let countObj: any = null;
 let countIdx: number = 0;
 let randomNum: number = 0;
-let countMsgObj: any = null;
 let countMsgNum: number = 0;
 
 class Food extends Component {
@@ -158,7 +155,7 @@ class Food extends Component {
         });
         setTimeout(() => {
           alert(this.state.information[randomNum].name);
-        }, 500);
+        }, 250);
       }
       this.setState({
         countId: information[countIdx].id,
@@ -168,7 +165,7 @@ class Food extends Component {
   };
 
   countMsg = (countNum: number) => {
-    countMsgNum = Math.floor(countNum * -30 * 0.001);
+    countMsgNum = Math.floor(countNum * -30 * 0.001) + 1;
   };
 
   render() {
