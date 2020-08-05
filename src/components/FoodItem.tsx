@@ -1,21 +1,20 @@
-
 import React, { useState } from 'react';
 
 const FoodItem = (props: {
   id: number;
   name: string;
-  // selectOn: string;
+  selectOn: string;
   disabled: boolean;
   updataItem: (id: number, name: string) => void;
   deleteItem: (id: number) => void;
 }) => {
-  const { id, /* selectOn, */ disabled, updataItem, deleteItem } = props;
+  const { id, selectOn, disabled, updataItem, deleteItem } = props;
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(props.name);
 
   if (editing) {
     return (
-      <div>
+      <div className={selectOn}>
         <input
           type="text"
           value={name}
@@ -49,7 +48,7 @@ const FoodItem = (props: {
   }
 
   return (
-    <div>
+    <div className={selectOn}>
       {name}
       <button
         type="button"
@@ -74,5 +73,4 @@ const FoodItem = (props: {
     </div>
   );
 };
-
 export default FoodItem;

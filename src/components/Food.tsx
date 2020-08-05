@@ -2,55 +2,67 @@ import React, { Component } from 'react';
 import FoodForm from './FoodForm';
 import FoodList from './FoodList';
 
+const time: number = 5;
+
 let countObj: any = null;
-let countNum: number = 0;
-let selectCountNum: number = 0;
+let countIdx: number = 0;
 let randomNum: number = 0;
+let countMsgObj: any = null;
+let countMsgNum: number = 0;
 
 class Food extends Component {
   state = {
-    id: 0,
-    // selectPointer: [],
+    id: 4,
+    on: '',
+    countId: -1,
     disabled: false,
     information: [
       {
         id: 0,
         name: 'a',
+        on: false,
       },
       {
         id: 1,
         name: 'b',
+        on: false,
       },
       {
         id: 2,
         name: 'c',
+        on: false,
       },
       {
         id: 3,
         name: 'd',
+        on: false,
       },
     ],
   };
 
   createItem = (inputData: string) => {
     const { information } = this.state;
-    const item: any[] = information;
+    const item: {
+      id: number;
+      name: string;
+      on: boolean;
+    }[] = information;
     if (inputData === '') {
       alert('값이 없음');
       return;
     }
-    item.push({ id: this.state.id++, name: inputData });
+    item.push({ id: this.state.id++, name: inputData, on: false });
     this.setState({
       information: item,
     });
-
   };
 
   updataItem = (id: number, name: string) => {
     const { information } = this.state;
     this.setState({
-      information: information.map((info: any) =>
-        info.id === id ? { id: id, name } : info
+      information: information.map(
+        (info: { id: number; name: string; on: boolean }) =>
+          info.id === id ? { id: id, name } : info
       ),
     });
   };
@@ -58,7 +70,9 @@ class Food extends Component {
   deleteItem = (id: number) => {
     const { information } = this.state;
     this.setState({
-      information: information.filter((info: any) => info.id !== id),
+      information: information.filter(
+        (info: { id: number; name: string; on: boolean }) => info.id !== id
+      ),
     });
   };
 
@@ -72,9 +86,21 @@ class Food extends Component {
   randomMix = () => {
     const { information } = this.state;
     let random: number[] = [];
-    let data: any[] = information;
-    let finalData: any[] = [];
-    random = this.shuffle(information.map((info: any) => info.id));
+    let data: {
+      id: number;
+      name: string;
+      on: boolean;
+    }[] = information;
+    let finalData: {
+      id: number;
+      name: string;
+      on: boolean;
+    }[] = [];
+    random = this.shuffle(
+      information.map(
+        (info: { id: number; name: string; on: boolean }) => info.id
+      )
+    );
     for (let i = 0; i < random.length; i++) {
       for (let j = 0; j < data.length; j++) {
         if (random[i] === data[j].id) {
@@ -107,39 +133,47 @@ class Food extends Component {
 
   countStart = () => {
     const { information } = this.state;
-    countNum = 0;
-    selectCountNum = randomNum;
-    this.countPointerMove(100, information.length);
+    countIdx = randomNum;
+    this.countPointerMove(25, information.length);
     this.setState({
+      on: 'on',
       disabled: true,
     });
   };
 
   countPointerMove = (spped: number, listLength: number) => {
     const { information } = this.state;
-    // const selectPointerNum = Math.floor(information.length / 2);
-
+    let countNum: number = listLength * -30;
     countObj = setInterval(() => {
-      const selectNum: number[] = [];
-      console.log('waiting');
-      // for (let i = 0; i < selectPointerNum; i++) {
-      //   selectNum.push(Math.floor(Math.random() * information.length));
-      // }
-      // this.setState({
-      //   selectPointer: selectNum,
-      // });
-    }, spped);
-    setTimeout(() => {
-      clearInterval(countObj);
+      countNum++;
+      countIdx++;
+      if (countIdx >= listLength) {
+        countIdx = 0;
+      }
+      if (countNum >= 0) {
+        clearInterval(countObj);
+        this.setState({
+          on: '',
+          disabled: false,
+        });
+        setTimeout(() => {
+          alert(this.state.information[randomNum].name);
+        }, 500);
+      }
       this.setState({
-        disabled: false,
+        countId: information[countIdx].id,
       });
-    }, 2000);
+      this.countMsg(countNum);
+    }, spped);
+  };
+
+  countMsg = (countNum: number) => {
+    countMsgNum = Math.floor(countNum * -30 * 0.001);
   };
 
   render() {
     return (
-      <>
+      <div className={this.state.on}>
         <FoodForm
           disabled={this.state.disabled}
           createList={this.createItem}
@@ -149,12 +183,18 @@ class Food extends Component {
         />
         <FoodList
           data={this.state.information}
-          // selectPointer={this.state.selectPointer}
           disabled={this.state.disabled}
           deleteItem={this.deleteItem}
           updataItem={this.updataItem}
+          countId={this.state.countId}
         />
-      </>
+        {this.state.disabled && (
+          <span className="count">
+            {/* {this.state.information[countIdx].name} */}
+            <span>{countMsgNum}</span>
+          </span>
+        )}
+      </div>
     );
   }
 }
