@@ -13,10 +13,12 @@ let data: any = '';
 if (localStorage.getItem('data') !== null) {
   data = localStorage.getItem('data');
   data = JSON.parse(data);
-  console.log(data);
   dataIdArr = data.map((item: any) => {
     return item.id;
   });
+  dataIdArr.length !== 0
+    ? (dataId = Math.max.apply(null, dataIdArr) + 1)
+    : (dataId = 0);
 } else {
   data = [];
   dataId = 0;
@@ -140,7 +142,7 @@ class Food extends Component {
   countStart = () => {
     const { information } = this.state;
     countIdx = randomNum;
-    this.countPointerMove(25, information.length);
+    this.countPointerMove(50, information.length);
     this.setState({
       on: 'on',
       disabled: true,
