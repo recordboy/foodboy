@@ -10,6 +10,7 @@ let dataIdArr: number[] = [];
 let dataId: number = 0;
 let data: any = '';
 
+countMsgNum = Math.floor((data.length * -10) * -10 * 0.005);
 if (localStorage.getItem('data') !== null) {
   data = localStorage.getItem('data');
   data = JSON.parse(data);
@@ -51,6 +52,7 @@ class Food extends Component {
       },
       () => {
         localStorage.setItem('data', JSON.stringify(this.state.information));
+        // countMsgNum = Math.floor((information.length * -10) * -10 * 0.005);
       }
     );
   };
@@ -75,11 +77,13 @@ class Food extends Component {
       },
       () => {
         localStorage.setItem('data', JSON.stringify(this.state.information));
+        // countMsgNum = Math.floor((information.length * -10) * -10 * 0.005);
       }
     );
   };
 
   deleteAllItem = () => {
+    const { information } = this.state;
     this.setState(
       {
         id: 0,
@@ -87,6 +91,7 @@ class Food extends Component {
       },
       () => {
         localStorage.setItem('data', JSON.stringify(this.state.information));
+        // countMsgNum = Math.floor((information.length * -10) * -10 * 0.005);
       }
     );
   };
@@ -156,7 +161,7 @@ class Food extends Component {
       name: string;
       on: boolean;
     }[] = information;
-    let countNum: number = listLength * -30;
+    let countNum: number = listLength * -10;
     countObj = setInterval(() => {
       countNum++;
       countIdx++;
@@ -170,6 +175,7 @@ class Food extends Component {
           disabled: false,
         });
         setTimeout(() => {
+          // countMsgNum = Math.floor((information.length * -10) * -10 * 0.005);
           alert(data[randomNum].name);
         }, 500);
       }
@@ -181,7 +187,7 @@ class Food extends Component {
   };
 
   countMsg = (countNum: number) => {
-    countMsgNum = Math.floor(countNum * -30 * 0.001);
+    countMsgNum = Math.floor(countNum * -10 * 0.005);
   };
 
   render() {
