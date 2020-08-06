@@ -2,9 +2,13 @@
   padding: 10px;
 }
 
-.App > div.on .search,
-.App > div.on .list {
-  filter: blur(3px);
+.App > div {
+  position: relative;
+}
+
+.App > div.on > div {
+  filter: blur(10px);
+  transition: 0.5s;
 }
 
 .search .inputTxt {
@@ -43,6 +47,7 @@
   height: 40px;
   line-height: 35px;
   font-size: 20px;
+  /* transition: 0.25s; */
 }
 
 .list > div.on {
@@ -69,7 +74,7 @@
   right: 80px;
 }
 
-.list > div > input[type='text'] {
+.list > div input[type='text'] {
   position: relative;
   vertical-align: top;
   top: 0;
@@ -81,12 +86,17 @@
   outline: none;
 }
 
+.list > div.on input[type='text'] {
+  background-color: #ccc;
+}
+
 .count {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  text-align: center;
   background-color: rgba(0, 0, 0, 0.25);
 }
 
@@ -95,7 +105,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 150px;
+  font-size: 100px;
   font-weight: bold;
   color: #fff;
 }

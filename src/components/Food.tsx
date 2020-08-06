@@ -6,35 +6,29 @@ let countObj: any = null;
 let countIdx: number = 0;
 let randomNum: number = 0;
 let countMsgNum: number = 0;
+let dataIdArr: number[] = [];
+let dataId: number = 0;
+let data: any = '';
+
+if (localStorage.getItem('data') !== null) {
+  data = localStorage.getItem('data');
+  data = JSON.parse(data);
+  console.log(data);
+  dataIdArr = data.map((item: any) => {
+    return item.id;
+  });
+} else {
+  data = [];
+  dataId = 0;
+}
 
 class Food extends Component {
   state = {
-    id: 4,
+    id: dataId,
     on: '',
     countId: -1,
     disabled: false,
-    information: [
-      {
-        id: 0,
-        name: 'a',
-        on: false,
-      },
-      {
-        id: 1,
-        name: 'b',
-        on: false,
-      },
-      {
-        id: 2,
-        name: 'c',
-        on: false,
-      },
-      {
-        id: 3,
-        name: 'd',
-        on: false,
-      },
-    ],
+    information: data,
   };
 
   createItem = (inputData: string) => {
@@ -49,9 +43,14 @@ class Food extends Component {
       return;
     }
     item.push({ id: this.state.id++, name: inputData, on: false });
-    this.setState({
-      information: item,
-    });
+    this.setState(
+      {
+        information: item,
+      },
+      () => {
+        localStorage.setItem('data', JSON.stringify(this.state.information));
+      }
+    );
   };
 
   updataItem = (id: number, name: string) => {
@@ -66,18 +65,28 @@ class Food extends Component {
 
   deleteItem = (id: number) => {
     const { information } = this.state;
-    this.setState({
-      information: information.filter(
-        (info: { id: number; name: string; on: boolean }) => info.id !== id
-      ),
-    });
+    this.setState(
+      {
+        information: information.filter(
+          (info: { id: number; name: string; on: boolean }) => info.id !== id
+        ),
+      },
+      () => {
+        localStorage.setItem('data', JSON.stringify(this.state.information));
+      }
+    );
   };
 
   deleteAllItem = () => {
-    this.setState({
-      id: 0,
-      information: [],
-    });
+    this.setState(
+      {
+        id: 0,
+        information: [],
+      },
+      () => {
+        localStorage.setItem('data', JSON.stringify(this.state.information));
+      }
+    );
   };
 
   randomMix = () => {
@@ -140,6 +149,11 @@ class Food extends Component {
 
   countPointerMove = (spped: number, listLength: number) => {
     const { information } = this.state;
+    const data: {
+      id: number;
+      name: string;
+      on: boolean;
+    }[] = information;
     let countNum: number = listLength * -30;
     countObj = setInterval(() => {
       countNum++;
@@ -154,18 +168,18 @@ class Food extends Component {
           disabled: false,
         });
         setTimeout(() => {
-          alert(this.state.information[randomNum].name);
-        }, 250);
+          alert(data[randomNum].name);
+        }, 500);
       }
       this.setState({
-        countId: information[countIdx].id,
+        countId: data[countIdx].id,
       });
       this.countMsg(countNum);
     }, spped);
   };
 
   countMsg = (countNum: number) => {
-    countMsgNum = Math.floor(countNum * -30 * 0.001) + 1;
+    countMsgNum = Math.floor(countNum * -30 * 0.001);
   };
 
   render() {
