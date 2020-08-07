@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/foodboy/static/css/main.f1d2f01f.chunk.css",
+    "main.js": "/foodboy/static/js/main.e312c462.chunk.js",
+    "main.js.map": "/foodboy/static/js/main.e312c462.chunk.js.map",
+    "runtime-main.js": "/foodboy/static/js/runtime-main.77319407.js",
+    "runtime-main.js.map": "/foodboy/static/js/runtime-main.77319407.js.map",
+    "static/js/2.a5852e13.chunk.js": "/foodboy/static/js/2.a5852e13.chunk.js",
+    "static/js/2.a5852e13.chunk.js.map": "/foodboy/static/js/2.a5852e13.chunk.js.map",
+    "index.html": "/foodboy/index.html",
+    "precache-manifest.c0d24992fedb3236a372225850cf4ff3.js": "/foodboy/precache-manifest.c0d24992fedb3236a372225850cf4ff3.js",
+    "service-worker.js": "/foodboy/service-worker.js",
+    "static/css/main.f1d2f01f.chunk.css.map": "/foodboy/static/css/main.f1d2f01f.chunk.css.map",
+    "static/js/2.a5852e13.chunk.js.LICENSE.txt": "/foodboy/static/js/2.a5852e13.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.77319407.js",
+    "static/js/2.a5852e13.chunk.js",
+    "static/css/main.f1d2f01f.chunk.css",
+    "static/js/main.e312c462.chunk.js"
+  ]
+}
