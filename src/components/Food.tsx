@@ -192,7 +192,7 @@ class Food extends Component {
     return (
       <div className={this.state.on}>
         <FoodMap
-          data={this.state.information}
+          createList={this.createItem}
         />
         <FoodForm
           disabled={this.state.disabled}

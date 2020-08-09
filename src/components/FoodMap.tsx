@@ -15,14 +15,11 @@ const style: {
 }
 
 const FoodMap = (props: {
-  data: object[];
+  createList: (data: string) => void;
 }) => {
-  const { data } = props;
+  const { createList } = props;
 
   useEffect(() => {
-
-    // 검색 데이터
-    let dataList: string[] = [];
 
     // 검색 엘리먼트
     let container = document.getElementById('map');
@@ -50,9 +47,9 @@ const FoodMap = (props: {
         let bounds = new window.kakao.maps.LatLngBounds();
 
         for (let i = 0; i < data.length; i++) {
-          dataList.push(data[i].place_name);
           displayMarker(data[i]);
           bounds.extend(new window.kakao.maps.LatLng(data[i].y, data[i].x));
+          // createList(data[i].place_name);
         }
 
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정
@@ -78,11 +75,9 @@ const FoodMap = (props: {
       });
     }
 
-    console.log(dataList);
 
   }, []);
 
-  console.log(data);
   return (
     <div id="map" style={style} />
   );
