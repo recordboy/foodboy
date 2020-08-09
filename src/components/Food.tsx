@@ -40,13 +40,12 @@ class Food extends Component {
     const item: {
       id: number;
       name: string;
-      on: boolean;
     }[] = information;
     if (inputData === '') {
       alert('값이 없음');
       return;
     }
-    item.push({ id: this.state.id++, name: inputData, on: false });
+    item.push({ id: this.state.id++, name: inputData });
     this.setState(
       {
         information: item,
@@ -62,7 +61,7 @@ class Food extends Component {
     const { information } = this.state;
     this.setState({
       information: information.map(
-        (info: { id: number; name: string; on: boolean }) =>
+        (info: { id: number; name: string; }) =>
           info.id === id ? { id: id, name } : info
       ),
     });
@@ -73,7 +72,7 @@ class Food extends Component {
     this.setState(
       {
         information: information.filter(
-          (info: { id: number; name: string; on: boolean }) => info.id !== id
+          (info: { id: number; name: string; }) => info.id !== id
         ),
       },
       () => {
@@ -103,16 +102,14 @@ class Food extends Component {
     let data: {
       id: number;
       name: string;
-      on: boolean;
     }[] = information;
     let finalData: {
       id: number;
       name: string;
-      on: boolean;
     }[] = [];
     random = this.shuffle(
       information.map(
-        (info: { id: number; name: string; on: boolean }) => info.id
+        (info: { id: number; name: string; }) => info.id
       )
     );
     for (let i = 0; i < random.length; i++) {
@@ -194,7 +191,9 @@ class Food extends Component {
   render() {
     return (
       <div className={this.state.on}>
-        <FoodMap />
+        <FoodMap
+          data={this.state.information}
+        />
         <FoodForm
           disabled={this.state.disabled}
           createList={this.createItem}
