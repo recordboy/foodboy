@@ -6,8 +6,15 @@ declare global {
   }
 }
 
-const FoodMap = (props: {
-}) => {
+const style: {
+  width: string,
+  height: string
+} = {
+  width: '100%',
+  height: '500px'
+}
+
+const FoodMap = () => {
 
   useEffect(() => {
     let container = document.getElementById('map');
@@ -21,9 +28,7 @@ const FoodMap = (props: {
   }, [])
 
   return (
-    <div className="App">
-      <div id="map" style={{ width: "500px", height: "500px" }} />
-    </div>
+    <div id="map" style={style} />
   );
 
 };
