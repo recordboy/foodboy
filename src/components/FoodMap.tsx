@@ -21,6 +21,9 @@ const FoodMap = (props: {
 
   useEffect(() => {
 
+    // 검색 데이터
+    let dataList: string[] = [];
+
     // 검색 엘리먼트
     let container = document.getElementById('map');
     let options = {
@@ -49,6 +52,8 @@ const FoodMap = (props: {
         for (let i = 0; i < data.length; i++) {
           displayMarker(data[i]);
           bounds.extend(new window.kakao.maps.LatLng(data[i].y, data[i].x));
+
+          dataList.push(data[i].place_name);
           // createList(data[i].place_name);
         }
 
@@ -74,6 +79,8 @@ const FoodMap = (props: {
         infowindow.open(map, marker);
       });
     }
+
+    console.log(dataList);
 
 
   }, []);
