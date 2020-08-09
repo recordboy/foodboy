@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FoodForm from './FoodForm';
 import FoodList from './FoodList';
+import FoodMap from './FoodMap';
 
 let countObj: any = null;
 let countIdx: number = 0;
@@ -193,6 +194,7 @@ class Food extends Component {
   render() {
     return (
       <div className={this.state.on}>
+        <FoodMap />
         <FoodForm
           disabled={this.state.disabled}
           createList={this.createItem}

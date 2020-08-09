@@ -73,4 +73,5 @@ const FoodItem = (props: {
     </div>
   );
 };
+
 export default FoodItem;
