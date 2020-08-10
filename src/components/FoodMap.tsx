@@ -82,7 +82,6 @@ const FoodMap = (props: {
 
     console.log(dataList);
 
-
   }, []);
 
   return (
