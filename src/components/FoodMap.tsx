@@ -40,7 +40,7 @@ const FoodMap = (props: {
     let ps = new window.kakao.maps.services.Places();
 
     // 키워드로 장소를 검색
-    ps.keywordSearch('안양', placesSearchCB);
+    ps.keywordSearch('안양 음식점', placesSearchCB);
 
     // 키워드 검색 완료 시 호출되는 콜백함수
     function placesSearchCB(data: any, status: any, pagination: any) {
