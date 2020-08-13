@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/foodboy/static/css/main.5cbe46ee.chunk.css",
-    "main.js": "/foodboy/static/js/main.41065677.chunk.js",
-    "main.js.map": "/foodboy/static/js/main.41065677.chunk.js.map",
+    "main.js": "/foodboy/static/js/main.df56ebe9.chunk.js",
+    "main.js.map": "/foodboy/static/js/main.df56ebe9.chunk.js.map",
     "runtime-main.js": "/foodboy/static/js/runtime-main.77319407.js",
     "runtime-main.js.map": "/foodboy/static/js/runtime-main.77319407.js.map",
     "static/js/2.a5852e13.chunk.js": "/foodboy/static/js/2.a5852e13.chunk.js",
     "static/js/2.a5852e13.chunk.js.map": "/foodboy/static/js/2.a5852e13.chunk.js.map",
     "index.html": "/foodboy/index.html",
-    "precache-manifest.5f0bc2751f4674615ee5babce8954e1c.js": "/foodboy/precache-manifest.5f0bc2751f4674615ee5babce8954e1c.js",
+    "precache-manifest.96c544a1f5f2bee0f2fdf593133088a5.js": "/foodboy/precache-manifest.96c544a1f5f2bee0f2fdf593133088a5.js",
     "service-worker.js": "/foodboy/service-worker.js",
     "static/css/main.5cbe46ee.chunk.css.map": "/foodboy/static/css/main.5cbe46ee.chunk.css.map",
     "static/js/2.a5852e13.chunk.js.LICENSE.txt": "/foodboy/static/js/2.a5852e13.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.77319407.js",
     "static/js/2.a5852e13.chunk.js",
     "static/css/main.5cbe46ee.chunk.css",
-    "static/js/main.41065677.chunk.js"
+    "static/js/main.df56ebe9.chunk.js"
   ]
 }
