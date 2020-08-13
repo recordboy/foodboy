@@ -33,21 +33,22 @@ const FoodMap = (props: { createList: (data: string) => void }) => {
       });
     };
 
+    // 검색 엘리먼트
+    let container = document.getElementById('map');
+    let options = {
+      center: new window.kakao.maps.LatLng(latitude, longitude),
+      level: 10,
+    };
+
+    let map = new window.kakao.maps.Map(container, options);
+
+    // 마커를 클릭하면 장소명을 표출할 인포윈도우
+    let infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
+
+    // 장소 검색 객체를 생성
+    let ps = new window.kakao.maps.services.Places();
+
     setLocation((latitude: any, longitude: any) => {
-      // 검색 엘리먼트
-      let container = document.getElementById('map');
-      let options = {
-        center: new window.kakao.maps.LatLng(latitude, longitude),
-        level: 10,
-      };
-
-      let map = new window.kakao.maps.Map(container, options);
-
-      // 마커를 클릭하면 장소명을 표출할 인포윈도우
-      let infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
-
-      // 장소 검색 객체를 생성
-      let ps = new window.kakao.maps.services.Places();
 
       // 키워드로 장소를 검색
       ps.keywordSearch('식당', placesSearchCB, {
