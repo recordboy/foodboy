@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b4f5da6e9c068250c784793ff2f8b29f",
+    "revision": "4297087cda97e58ffba47a68b9a61cee",
     "url": "/foodboy/index.html"
   },
   {
-    "revision": "f9ca331fa87a025f0cc6",
-    "url": "/foodboy/static/css/main.f1d2f01f.chunk.css"
+    "revision": "6c71ff95d0b6ab72bf34",
+    "url": "/foodboy/static/css/main.5cbe46ee.chunk.css"
   },
   {
     "revision": "c09bf0b5f30ca2231fa8",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/foodboy/static/js/2.a5852e13.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f9ca331fa87a025f0cc6",
-    "url": "/foodboy/static/js/main.e312c462.chunk.js"
+    "revision": "6c71ff95d0b6ab72bf34",
+    "url": "/foodboy/static/js/main.41065677.chunk.js"
   },
   {
     "revision": "0db1ba28d716dabb19d4",
