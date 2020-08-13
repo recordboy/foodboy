@@ -11,7 +11,7 @@ const style: {
   height: string;
 } = {
   width: '100%',
-  height: '200px',
+  height: '500px',
 };
 
 const FoodMap = (props: { createList: (data: string) => void }) => {
@@ -51,9 +51,10 @@ const FoodMap = (props: { createList: (data: string) => void }) => {
     setLocation((latitude: any, longitude: any) => {
 
       // 키워드로 장소를 검색
-      ps.keywordSearch('식당', placesSearchCB, {
+      ps.keywordSearch('답십리 미용실', placesSearchCB, {
         x: latitude,
         y: longitude,
+        size: 15
       });
 
       // 키워드 검색 완료 시 호출되는 콜백함수
