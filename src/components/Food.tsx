@@ -11,7 +11,7 @@ let dataIdArr: number[] = [];
 let dataId: number = 0;
 let data: any = '';
 
-countMsgNum = Math.floor((data.length * -10) * -10 * 0.005);
+countMsgNum = Math.floor(data.length * -10 * -10 * 0.005);
 if (localStorage.getItem('data') !== null) {
   data = localStorage.getItem('data');
   data = JSON.parse(data);
@@ -60,9 +60,8 @@ class Food extends Component {
   updataItem = (id: number, name: string) => {
     const { information } = this.state;
     this.setState({
-      information: information.map(
-        (info: { id: number; name: string; }) =>
-          info.id === id ? { id: id, name } : info
+      information: information.map((info: { id: number; name: string }) =>
+        info.id === id ? { id: id, name } : info
       ),
     });
   };
@@ -72,7 +71,7 @@ class Food extends Component {
     this.setState(
       {
         information: information.filter(
-          (info: { id: number; name: string; }) => info.id !== id
+          (info: { id: number; name: string }) => info.id !== id
         ),
       },
       () => {
@@ -108,9 +107,7 @@ class Food extends Component {
       name: string;
     }[] = [];
     random = this.shuffle(
-      information.map(
-        (info: { id: number; name: string; }) => info.id
-      )
+      information.map((info: { id: number; name: string }) => info.id)
     );
     for (let i = 0; i < random.length; i++) {
       for (let j = 0; j < data.length; j++) {
@@ -137,6 +134,10 @@ class Food extends Component {
 
   randomSelect = () => {
     const { information } = this.state;
+    if (information.length === 0) {
+      alert('값이 없음');
+      return;
+    }
     randomNum = Math.floor(Math.random() * information.length);
     this.countStart();
     console.log('result index : ' + randomNum);
@@ -191,9 +192,7 @@ class Food extends Component {
   render() {
     return (
       <div className={this.state.on}>
-        <FoodMap
-          createList={this.createItem}
-        />
+        <FoodMap createList={this.createItem} />
         <FoodForm
           disabled={this.state.disabled}
           createList={this.createItem}
