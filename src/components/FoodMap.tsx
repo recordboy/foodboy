@@ -14,7 +14,9 @@ const style: {
   height: '500px',
 };
 
-const FoodMap = (props: { createList: (data: string) => void }) => {
+const FoodMap = (props: { searchMapInit: (data: string) => void, createList: (data: string) => void }) => {
+
+  const { searchMapInit } = props;
   const { createList } = props;
   const [address, setAddress] = useState('');
 
@@ -62,8 +64,9 @@ const FoodMap = (props: { createList: (data: string) => void }) => {
 
       // 좌표로 주소 정보 결과
       const displayCenterInfo = (result: any, status: any) => {
-        console.log(result, status);
+        searchMapInit(result[0].address_name);
       };
+
       // 키워드 검색 완료 시 호출되는 콜백함수
       const placesSearchCB = (data: any, status: any, pagination: any) => {
         if (status === window.kakao.maps.services.Status.OK) {
@@ -107,10 +110,10 @@ const FoodMap = (props: { createList: (data: string) => void }) => {
       searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 
       // 키워드로 장소를 검색
-      ps.keywordSearch('서울특별시 동작구 관광명소', placesSearchCB, {
-        x: latitude,
-        y: longitude,
-      });
+      // ps.keywordSearch('서울특별시 동작구 관광명소', placesSearchCB, {
+      //   x: latitude,
+      //   y: longitude,
+      // });
     });
 
     // console.log(dataList);

@@ -34,7 +34,21 @@ class Food extends Component {
     countId: -1,
     disabled: false,
     information: data,
+    searchMapItem: '',
+    addressMap: ''
   };
+
+  searchMapInit = (item: string) => {
+    this.setState({
+      addressMap: item
+    });
+  }
+
+  searchMap = (item: string) => {
+    this.setState({
+      addressMap: item
+    });
+  }
 
   createItem = (inputData: string) => {
     const { information } = this.state;
@@ -193,8 +207,10 @@ class Food extends Component {
   render() {
     return (
       <div className={this.state.on}>
-        <FoodBtn />
-        <FoodMap createList={this.createItem} />
+        <FoodBtn searchMap={this.searchMap} />
+        <FoodMap
+          searchMapInit={this.searchMapInit}
+          createList={this.createItem} />
         <FoodForm
           disabled={this.state.disabled}
           createList={this.createItem}
