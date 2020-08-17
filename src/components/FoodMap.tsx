@@ -11,7 +11,7 @@ const style: {
   height: string;
 } = {
   width: '100%',
-  height: '200px',
+  height: '500px',
 };
 
 const FoodMap = (props: { createList: (data: string) => void }) => {
@@ -107,7 +107,7 @@ const FoodMap = (props: { createList: (data: string) => void }) => {
       searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 
       // 키워드로 장소를 검색
-      ps.keywordSearch('서울특별시 동작구 식당', placesSearchCB, {
+      ps.keywordSearch('서울특별시 동작구 관광명소', placesSearchCB, {
         x: latitude,
         y: longitude,
       });
