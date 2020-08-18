@@ -67,7 +67,6 @@ class Food extends Component {
       },
       () => {
         localStorage.setItem('data', JSON.stringify(this.state.information));
-        // countMsgNum = Math.floor((information.length * -10) * -10 * 0.005);
       }
     );
   };
@@ -91,7 +90,6 @@ class Food extends Component {
       },
       () => {
         localStorage.setItem('data', JSON.stringify(this.state.information));
-        // countMsgNum = Math.floor((information.length * -10) * -10 * 0.005);
       }
     );
   };
@@ -105,7 +103,6 @@ class Food extends Component {
       },
       () => {
         localStorage.setItem('data', JSON.stringify(this.state.information));
-        // countMsgNum = Math.floor((information.length * -10) * -10 * 0.005);
       }
     );
   };
@@ -189,7 +186,6 @@ class Food extends Component {
           disabled: false,
         });
         setTimeout(() => {
-          // countMsgNum = Math.floor((information.length * -10) * -10 * 0.005);
           alert(data[randomNum].name);
         }, 500);
       }
