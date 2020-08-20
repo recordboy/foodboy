@@ -3,11 +3,15 @@ import FoodForm from './FoodForm';
 import FoodList from './FoodList';
 import FoodMap from './FoodMap';
 import FoodBtn from './FoodBtn';
+import { Console } from 'console';
 
+// ramdom
 let countObj: any = null;
 let countIdx: number = 0;
 let randomNum: number = 0;
 let countMsgNum: number = 0;
+
+// list
 let dataIdArr: number[] = [];
 let dataId: number = 0;
 let data: any = '';
@@ -34,21 +38,23 @@ class Food extends Component {
     countId: -1,
     disabled: false,
     information: data,
-    searchMapItem: '',
-    addressMap: ''
+    searchAddress: '',
+    searchItem: '',
   };
 
-  searchMapInit = (item: string) => {
+  setSearchAddress = (address: string) => {
     this.setState({
-      addressMap: item
+      searchAddress: address,
     });
-  }
+    console.log(this.state.searchAddress);
+  };
 
-  searchMap = (item: string) => {
+  setSearchItem = (item: string) => {
     this.setState({
-      addressMap: item
+      searchItem: item,
     });
-  }
+    console.log(this.state.searchItem);
+  };
 
   createItem = (inputData: string) => {
     const { information } = this.state;
@@ -90,6 +96,7 @@ class Food extends Component {
       },
       () => {
         localStorage.setItem('data', JSON.stringify(this.state.information));
+        // countMsgNum = Math.floor((information.length * -10) * -10 * 0.005);
       }
     );
   };
@@ -103,6 +110,7 @@ class Food extends Component {
       },
       () => {
         localStorage.setItem('data', JSON.stringify(this.state.information));
+        // countMsgNum = Math.floor((information.length * -10) * -10 * 0.005);
       }
     );
   };
@@ -186,6 +194,7 @@ class Food extends Component {
           disabled: false,
         });
         setTimeout(() => {
+          // countMsgNum = Math.floor((information.length * -10) * -10 * 0.005);
           alert(data[randomNum].name);
         }, 500);
       }
@@ -203,10 +212,12 @@ class Food extends Component {
   render() {
     return (
       <div className={this.state.on}>
-        <FoodBtn searchMap={this.searchMap} />
+        <FoodBtn setSearchItem={this.setSearchItem} />
         <FoodMap
-          searchMapInit={this.searchMapInit}
-          createList={this.createItem} />
+          searchItem={this.state.searchItem}
+          createList={this.createItem}
+          setSearchAddress={this.setSearchAddress}
+        />
         <FoodForm
           disabled={this.state.disabled}
           createList={this.createItem}

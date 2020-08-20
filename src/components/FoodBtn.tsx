@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 
-const FoodBtn = (props: {
-  searchMap: (item: string) => void
-}) => {
-  const {
-    searchMap
-  } = props;
+const FoodBtn = (props: { setSearchItem: (item: string) => void }) => {
+  const { setSearchItem } = props;
   return (
     <div>
       <div>
-        <button type="button" value="식당" onClick={(e) => {
-
-          console.log(e);
-          // searchMap(e.target.value);
-        }}>식당</button>
+        <button
+          type="button"
+          onClick={(e) => {
+            setSearchItem('식당');
+          }}
+        >
+          식당
+        </button>
         <button type="button">술집</button>
         <button type="button">카페</button>
         <button type="button">편의점</button>
